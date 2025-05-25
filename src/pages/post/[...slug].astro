@@ -5,7 +5,7 @@ import SiteLayout from '@/layouts/SiteLayout.astro'
 import '@/styles/blog.css'
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog')
+  const blogEntries = await getCollection('posts')
   return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
@@ -14,10 +14,45 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props
 const { Content } = await entry.render()
+
+// Format publication date
+const formattedDate = new Date(entry.data.pubDate).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})
 ---
 
-<SiteLayout title={entry.data.title}>
-  <article transition:animate="initial" class="blog">
-    <Content />
+<SiteLayout title={`${entry.data.title} | penjj`}>
+  <article class="py-8 max-w-3xl mx-auto">
+    <header class="mb-8">
+      <h1 class="text-3xl sm:text-4xl font-bold">{entry.data.title}</h1>
+      <div class="flex items-center gap-3 mt-4 text-tertiary">
+        <time datetime={entry.data.pubDate.toISOString()}>{formattedDate}</time>
+        <span>•</span>
+        <span>{entry.data.author}</span>
+      </div>
+
+      entry.data.tags && entry.data.tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 mt-4">
+        {
+          entry.data.tags.map((tag: string) => (
+            <span class="bg-gray-100 dark:bg-gray-800 rounded px-2 py-1 text-xs">{tag}</span>
+          ))
+        }
+      </div>
+      ) }
+    </header>
+
+    <div class="prose dark:prose-invert max-w-none blog">
+      <Content />
+    </div>
+
+    <div class="mt-12 pt-6 border-t dark:border-gray-800">
+      <a href="/post" class="flex items-center gap-2 text-tertiary hover:underline">
+        <div class="i-lucide-arrow-left text-4"></div>
+        <span>Back to all posts</span>
+      </a>
+    </div>
   </article>
 </SiteLayout>

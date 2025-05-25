@@ -1,7 +1,99 @@
 ---
 import SiteLayout from '@/layouts/SiteLayout.astro'
+
+// Define your projects data
+const projects = [
+  {
+    title: 'Package Name',
+    description: 'A lightweight utility library for JavaScript developers with zero dependencies.',
+    technologies: ['TypeScript', 'Jest', 'Rollup'],
+    github: 'https://github.com/penjj/package-name',
+    demo: 'https://package-name-demo.vercel.app',
+    featured: true,
+  },
+  {
+    title: 'Another Project',
+    description: 'A responsive web application template with dark mode support and customizable components.',
+    technologies: ['React', 'TailwindCSS', 'Next.js'],
+    github: 'https://github.com/penjj/another-project',
+    demo: 'https://another-project.vercel.app',
+    featured: true,
+  },
+  {
+    title: 'CLI Tool',
+    description: 'Command-line interface for automating frontend development workflows.',
+    technologies: ['Node.js', 'Commander.js', 'Inquirer'],
+    github: 'https://github.com/penjj/cli-tool',
+    featured: false,
+  },
+  {
+    title: 'UI Component Library',
+    description: 'A collection of reusable UI components for modern web applications.',
+    technologies: ['Vue', 'Storybook', 'SCSS'],
+    github: 'https://github.com/penjj/ui-components',
+    demo: 'https://ui-components.vercel.app',
+    featured: false,
+  },
+]
 ---
 
 <SiteLayout title="penjj · Projects">
-  <h1></h1>
+  <section class="py-8">
+    <h1 class="text-3xl font-bold mb-6">Projects</h1>
+    <p class="text-tertiary mb-8">
+      A collection of projects I've worked on. These include open-source packages, web applications, and experimental
+      projects. Feel free to check out the repositories or live demos.
+    </p>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        projects.map((project) => (
+          <div class="border dark:border-gray-800 rounded-lg overflow-hidden">
+            <div class="p-5">
+              <div class="flex justify-between items-start">
+                <h2 class="text-xl font-semibold">{project.title}</h2>
+                {project.featured && (
+                  <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 text-xs px-2 py-1 rounded">
+                    Featured
+                  </span>
+                )}
+              </div>
+
+              <p class="mt-2 text-tertiary">{project.description}</p>
+
+              <div class="flex flex-wrap gap-2 mt-4">
+                {project.technologies.map((tech) => (
+                  <span class="bg-gray-100 dark:bg-gray-800 rounded px-2 py-1 text-xs">{tech}</span>
+                ))}
+              </div>
+
+              <div class="flex gap-4 mt-6">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-1 text-sm"
+                >
+                  <div class="i-bi:github text-5" />
+                  <span>View Source</span>
+                </a>
+
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-1 text-sm"
+                  >
+                    <div class="i-lucide-external-link text-4" />
+                    <span>Live Demo</span>
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 </SiteLayout>

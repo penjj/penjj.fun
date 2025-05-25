@@ -2,12 +2,55 @@
 import SiteLayout from '@/layouts/SiteLayout.astro'
 ---
 
-<SiteLayout title="penjj · Posts">
-  <h1 class="text-3xl">如何联系我？</h1>
-  <div>扫一扫加我微信</div>
-  <img class="w-30 mt-4" src="/wechat.png" />
-  或
-  <div class="mt-8">
-    email: <a href="mailto:peng.j.1995@gmail.com">peng.j.1995@gmail.com</a>
-  </div>
+<SiteLayout title="penjj · About Me">
+  <section class="py-8">
+    <h1 class="text-3xl font-bold mb-6">关于我</h1>
+
+    <div class="prose dark:prose-invert max-w-none">
+      <p>
+        你好！我是Penjj，一名热爱前端技术的开发者。我专注于现代Web应用开发， 对JavaScript生态系统和性能优化有浓厚兴趣。
+      </p>
+
+      <p>我喜欢探索新技术并参与开源社区。我相信通过分享知识和经验， 我们可以共同推动Web技术的发展。</p>
+
+      <h2 class="text-2xl font-semibold mt-8 mb-4">技能</h2>
+      <ul>
+        <li>前端开发 (HTML, CSS, JavaScript/TypeScript)</li>
+        <li>现代框架 (React, Vue, Solid.js)</li>
+        <li>构建工具 (Vite, webpack, Rollup)</li>
+        <li>性能优化</li>
+        <li>用户界面设计</li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold mt-8 mb-4">经历</h2>
+      <p>
+        我有多年的前端开发经验，参与过大型Web应用的开发和维护。
+        同时，我也热衷于分享我的技术心得，这也是我建立这个博客的初衷。
+      </p>
+    </div>
+
+    <h2 class="text-2xl font-semibold mt-8 mb-4">如何联系我？</h2>
+    <div class="flex flex-col sm:flex-row gap-8 mt-6">
+      <div>
+        <p class="mb-2">扫一扫加我微信</p>
+        <img class="w-32 h-32 mt-2" src="/wechat.png" alt="WeChat QR Code" />
+      </div>
+
+      <div>
+        <p class="mb-2">或者通过以下方式联系我：</p>
+        <ul class="space-y-3 mt-4">
+          <li class="flex items-center gap-2">
+            <div class="i-lucide-mail text-5"></div>
+            <a href="mailto:peng.j.1995@gmail.com" class="hover:underline">peng.j.1995@gmail.com</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <div class="i-bi:github text-5"></div>
+            <a href="https://github.com/penjj" target="_blank" rel="noopener noreferrer" class="hover:underline"
+              >github.com/penjj</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 </SiteLayout>

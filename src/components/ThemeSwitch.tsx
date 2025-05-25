@@ -17,7 +17,6 @@ function toggle() {
 }
 
 function toggleTheme({ clientX: x, clientY: y }: MouseEvent) {
-  // @ts-expect-error experimental API
   if (!document.startViewTransition)
     return toggle()
 
@@ -26,7 +25,6 @@ function toggleTheme({ clientX: x, clientY: y }: MouseEvent) {
     Math.max(y, innerHeight - y),
   )
 
-  // @ts-expect-error: Transition API
   const transition = document.startViewTransition(toggle)
   transition.ready.then(() => {
     const clipPath = [

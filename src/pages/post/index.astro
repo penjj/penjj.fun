@@ -1,11 +1,35 @@
 ---
 import { getCollection } from 'astro:content'
 import SiteLayout from '@/layouts/SiteLayout.astro'
-import { join } from 'node:path'
+import { BlogPostCard } from '@/components/BlogPostCard.tsx'
 
-const blogs = await getCollection('blog')
+// Get all blog posts and sort by date
+const posts = await getCollection('posts')
+const sortedPosts = posts.sort((a, b) => {
+  return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+})
 ---
 
 <SiteLayout title="penjj · Blog">
-  {blogs.map((item) => <a href={join('/', item.collection, '/', item.slug)}>{item.data.title}</a>)}
+  <section class="py-8">
+    <h1 class="text-3xl font-bold mb-6">Blog</h1>
+    <p class="text-tertiary mb-8">
+      Thoughts, ideas, and technical articles about frontend development, JavaScript, and more.
+    </p>
+
+    <div class="grid gap-6 sm:grid-cols-2">
+      {
+        sortedPosts.map((post) => (
+          <BlogPostCard
+            title={post.data.title}
+            date={post.data.pubDate}
+            url={`/post/${post.slug}`}
+            description={post.data.description || ''}
+            tags={post.data.tags || []}
+            client:load
+          />
+        ))
+      }
+    </div>
+  </section>
 </SiteLayout>

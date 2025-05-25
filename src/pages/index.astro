@@ -2,6 +2,75 @@
 import SiteLayout from '@/layouts/SiteLayout.astro'
 ---
 
-<SiteLayout title="penjj · Site">
-  <h1></h1>
+<SiteLayout title="penjj · Home">
+  <section class="space-y-8 py-10">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
+      <div>
+        <h1 class="text-3xl font-bold tracking-tight text-primary">你好，我是Penjj</h1>
+        <p class="text-1xl text-secondary mt-3">前端开发者 & 开源爱好者</p>
+      </div>
+    </div>
+
+    <div class="prose-lg dark:prose-invert max-w-none mt10">
+      <p>欢迎来到我的个人网站！我热爱Web开发、JavaScript生态，以及构建能让开发者工作更轻松的工具。</p>
+
+      <p class="mt-3">
+        本网站使用 <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>,
+        <a href="https://www.solidjs.com/" target="_blank" rel="noopener noreferrer">Solid.js</a> 和
+        <a href="https://unocss.dev/" target="_blank" rel="noopener noreferrer">UnoCSS</a> 构建，这套组合能提供出色的性能和开发体验。
+      </p>
+    </div>
+
+    <div class="mt-10">
+      <h2 class="text-3xl font-semibold mb-6">最新文章</h2>
+      <div class="grid gap-6 sm:grid-cols-2">
+        <a
+          href="/post/should-package-json-dependencies-be-locked"
+          class="block p-5 rounded-lg border dark:border-gray-800 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
+        >
+          <h3 class="text-xl font-medium">请不要固定package.json中的依赖版本</h3>
+          <p class="text-secondary mt-2">2023-09-18</p>
+        </a>
+        <a
+          href="/post/micro-front"
+          class="block p-5 rounded-lg border dark:border-gray-800 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
+        >
+          <h3 class="text-xl font-medium">对微前端的一点思考</h3>
+          <p class="text-secondary mt-2">2024-06-13</p>
+        </a>
+      </div>
+      <div class="mt-6">
+        <a href="/post" class="text-secondary hover:underline flex items-center gap-1">
+          查看所有文章
+          <div class="i-lucide-arrow-right text-4"></div>
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-10">
+      <h2 class="text-3xl font-semibold mb-6">精选项目</h2>
+      <div class="grid gap-6 sm:grid-cols-2">
+        <a
+          href="/projects"
+          class="block p-5 rounded-lg border dark:border-gray-800 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
+        >
+          <h3 class="text-xl font-medium">项目一</h3>
+          <p class="text-secondary mt-2">项目简要描述</p>
+        </a>
+        <a
+          href="/projects"
+          class="block p-5 rounded-lg border dark:border-gray-800 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
+        >
+          <h3 class="text-xl font-medium">项目二</h3>
+          <p class="text-secondary mt-2">另一个项目描述</p>
+        </a>
+      </div>
+      <div class="mt-6">
+        <a href="/projects" class="text-secondary hover:underline flex items-center gap-1">
+          查看所有项目
+          <div class="i-lucide-arrow-right text-4"></div>
+        </a>
+      </div>
+    </div>
+  </section>
 </SiteLayout>

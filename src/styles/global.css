@@ -39,3 +39,7 @@ body {
 [data-theme='light'] .article-container {
   background: none;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
